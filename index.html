@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grand Horizon Tour</title>
+<meta name="description" content="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:ital,wght@0,500;0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+
+<header class="topbar" id="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="#inicio" data-link aria-label="Grand Horizon Tour">
+    <img
+        src="Assents/Logo de Corrida Grand Horizon.png"
+        alt="Grand Horizon Tour"
+        class="brand__logo"
+    >
+</a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <ul>
+        <li><a href="#inicio" data-link>Início</a></li>
+        <li><a href="#noticias" data-link>Notícias</a></li>
+        <li><a href="#modalidades" data-link>Modalidades</a></li>
+        <li><a href="#campeoes" data-link>Campeões</a></li>
+        <li><a href="#eventos" data-link>Eventos</a></li>
+        <li><a href="#equipes" data-link>Equipes Filiadas</a></li>
+        <li><a href="#patrocinadores" data-link>Patrocinadores</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="topbar__line" aria-hidden="true"></div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+
+  <!-- INÍCIO -->
+  <section class="page" id="inicio" aria-labelledby="t-inicio">
+    <div class="hero">
+      <div class="hero__speed" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="wrap hero__body">
+        <img
+        src="Assents/Logo de Corrida Grand Horizon.png"
+        alt="Grand Horizon Tour" 
+        class="logo_main">
+
+        <p class="slot slot--text hero__sub" data-slot="hero-subtitulo"></p>
+        <div class="hero__cta">
+          <a class="btn btn--red" href="#noticias" data-link data-slot="hero-botao-1"><span class="ph"></span>Noticias</a>
+          <a class="btn btn--ghost" href="#eventos" data-link data-slot="hero-botao-2"><span class="ph"></span>Eventos</a>
+        </div>
+      </div>
+      <div class="flag" aria-hidden="true"></div>
+    </div>
+
+    <div class="wrap">
+      <div class="stats" data-repeat="4" data-tpl="tpl-stat" data-slot="indicadores"></div>
+
+      <header class="sec-head"><h2>Destaques</h2><a class="more" href="#noticias" data-link data-slot="ver-mais"><span class="ph"></span></a></header>
+      <div class="feature" data-slot="destaques">
+        <article class="card card--lg" data-slot="destaque-principal"><div class="card__img"></div><div class="card__body"><span class="ph ph--tag"></span><span class="ph ph--title"></span><span class="ph"></span><span class="ph ph--short"></span></div></article>
+        <div class="feature__side" data-repeat="2" data-tpl="tpl-card-row"></div>
+      </div>
+
+      <header class="sec-head"><h2>Últimas notícias</h2></header>
+      <div class="grid grid--3" data-repeat="3" data-tpl="tpl-card" data-slot="ultimas-noticias"></div>
+
+      <header class="sec-head"><h2>Próximos eventos</h2></header>
+      <div class="list" data-repeat="3" data-tpl="tpl-event" data-slot="proximos-eventos"></div>
+    </div>
+  </section>
+
+  <!-- NOTÍCIAS -->
+  <section class="page" id="noticias" aria-labelledby="t-noticias" hidden>
+    <div class="wrap">
+      <header class="page-head"><h1 id="t-noticias">Notícias</h1><div class="slash" aria-hidden="true"></div></header>
+      <div class="toolbar">
+        <div class="chips" data-repeat="5" data-tpl="tpl-chip" data-slot="filtros-categoria"></div>
+        <div class="search"><input type="search" aria-label="Buscar notícias" placeholder=""></div>
+      </div>
+      <div class="grid grid--3" data-repeat="9" data-tpl="tpl-card" data-slot="lista-noticias"></div>
+      <nav class="pager" aria-label="Paginação" data-repeat="5" data-tpl="tpl-page" data-slot="paginacao"></nav>
+    </div>
+  </section>
+
+  <!-- MODALIDADES -->
+  <section class="page" id="modalidades" aria-labelledby="t-modalidades" hidden>
+    <div class="wrap">
+      <header class="page-head"><h1 id="t-modalidades">Modalidades</h1><div class="slash" aria-hidden="true"></div></header>
+      <div class="grid grid--3" data-repeat="6" data-tpl="tpl-modal" data-slot="lista-modalidades"></div>
+    </div>
+  </section>
+
+  <!-- CAMPEÕES -->
+  <section class="page" id="campeoes" aria-labelledby="t-campeoes" hidden>
+    <div class="wrap">
+      <header class="page-head"><h1 id="t-campeoes">Campeões</h1><div class="slash" aria-hidden="true"></div></header>
+      <div class="toolbar"><div class="chips" data-repeat="4" data-tpl="tpl-chip" data-slot="filtros-temporada"></div></div>
+      <div class="podium" data-slot="podio">
+        <article class="pod pod--2"><div class="pod__photo"></div><span class="ph ph--title"></span><span class="ph ph--short"></span><div class="pod__step"></div></article>
+        <article class="pod pod--1"><div class="pod__photo"></div><span class="ph ph--title"></span><span class="ph ph--short"></span><div class="pod__step"></div></article>
+        <article class="pod pod--3"><div class="pod__photo"></div><span class="ph ph--title"></span><span class="ph ph--short"></span><div class="pod__step"></div></article>
+      </div>
+      <header class="sec-head"><h2>Histórico</h2></header>
+      <div class="table" role="table" aria-label="Histórico de campeões">
+        <div class="table__row table__row--head" role="row"><span class="ph"></span><span class="ph"></span><span class="ph"></span><span class="ph"></span></div>
+        <div data-repeat="8" data-tpl="tpl-row" data-slot="historico-campeoes"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTOS -->
+  <section class="page" id="eventos" aria-labelledby="t-eventos" hidden>
+    <div class="wrap">
+      <header class="page-head"><h1 id="t-eventos">Eventos</h1><div class="slash" aria-hidden="true"></div></header>
+      <div class="toolbar">
+        <div class="chips" data-repeat="3" data-tpl="tpl-chip" data-slot="filtros-eventos"></div>
+        <div class="search"><input type="search" aria-label="Buscar eventos" placeholder=""></div>
+      </div>
+      <div class="list" data-repeat="8" data-tpl="tpl-event" data-slot="lista-eventos"></div>
+    </div>
+  </section>
+
+  <!-- EQUIPES FILIADAS -->
+  <section class="page" id="equipes" aria-labelledby="t-equipes" hidden>
+    <div class="wrap">
+      <header class="page-head"><h1 id="t-equipes">Equipes Filiadas</h1><div class="slash" aria-hidden="true"></div></header>
+      <div class="toolbar"><div class="search"><input type="search" aria-label="Buscar equipes" placeholder=""></div></div>
+      <div class="grid grid--4" data-repeat="12" data-tpl="tpl-team" data-slot="lista-equipes"></div>
+    </div>
+  </section>
+
+  <!-- PATROCINADORES -->
+  <section class="page" id="patrocinadores" aria-labelledby="t-patrocinadores" hidden>
+    <div class="wrap">
+      <header class="page-head"><h1 id="t-patrocinadores">Patrocinadores</h1><div class="slash" aria-hidden="true"></div></header>
+      <div class="tier" data-slot="patrocinio-principal"><span class="tier__name ph ph--title"></span><div class="grid grid--2" data-repeat="2" data-tpl="tpl-logo-lg"></div></div>
+      <div class="tier" data-slot="patrocinio-oficial"><span class="tier__name ph ph--title"></span><div class="grid grid--4" data-repeat="4" data-tpl="tpl-logo"></div></div>
+      <div class="tier" data-slot="patrocinio-apoio"><span class="tier__name ph ph--title"></span><div class="grid grid--6" data-repeat="6" data-tpl="tpl-logo"></div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="flag" aria-hidden="true"></div>
+  <div class="wrap footer__inner">
+    <span class="brand__name">Grand Horizon <b>Tour</b></span>
+    <div class="footer__cols" data-slot="rodape">
+      <div><span class="ph ph--title"></span><span class="ph"></span><span class="ph"></span></div>
+      <div><span class="ph ph--title"></span><span class="ph"></span><span class="ph"></span></div>
+      <div><span class="ph ph--title"></span><span class="ph"></span><span class="ph"></span></div>
+    </div>
+    <div class="social" data-repeat="4" data-tpl="tpl-social" data-slot="redes-sociais"></div>
+  </div>
+</footer>
+
+<!-- Modelos reutilizáveis: edite aqui ou substitua por dados reais via script.js -->
+<template id="tpl-stat"><div class="stat"><span class="ph ph--big"></span><span class="ph ph--short"></span></div></template>
+<template id="tpl-chip"><button class="chip" type="button"><span class="ph ph--chip"></span></button></template>
+<template id="tpl-page"><button class="pg" type="button"></button></template>
+<template id="tpl-card"><article class="card"><div class="card__img"></div><div class="card__body"><span class="ph ph--tag"></span><span class="ph ph--title"></span><span class="ph"></span><span class="ph ph--short"></span></div></article></template>
+<template id="tpl-card-row"><article class="card card--row"><div class="card__img"></div><div class="card__body"><span class="ph ph--tag"></span><span class="ph ph--title"></span><span class="ph ph--short"></span></div></article></template>
+<template id="tpl-modal"><article class="card modal"><div class="modal__icon"></div><div class="card__body"><span class="ph ph--title"></span><span class="ph"></span><span class="ph"></span><span class="ph ph--short"></span></div></article></template>
+<template id="tpl-event"><article class="event"><div class="event__date"><span class="ph ph--big"></span><span class="ph ph--short"></span></div><div class="event__body"><span class="ph ph--title"></span><span class="ph ph--short"></span></div><div class="event__tag"><span class="ph ph--chip"></span></div></article></template>
+<template id="tpl-row"><div class="table__row" role="row"><span class="ph"></span><span class="ph"></span><span class="ph"></span><span class="ph"></span></div></template>
+<template id="tpl-team"><article class="card team"><div class="team__logo"></div><span class="ph ph--title"></span><span class="ph ph--short"></span></article></template>
+<template id="tpl-logo"><div class="logo"></div></template>
+<template id="tpl-logo-lg"><div class="logo logo--lg"></div></template>
+<template id="tpl-social"><a class="social__item" href="#" aria-hidden="true" tabindex="-1"></a></template>
+
+<script src="script.js"></script>
+</body>
+</html>
