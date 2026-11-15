@@ -13,6 +13,51 @@
 
   let current = null;
 
+
+  const teams = [
+    { id: 'Brasil', name: 'Andrade', image: 'Equipes/Brasil.png' },
+    { id: 'USA', name: 'Rutherford Eagles', image: 'Equipes/USA.png' },
+    { id: 'russia', name: 'Zhar-Ptitsa', image: 'Equipes/Russia.png' },
+    { id: 'japao', name: 'Yatagarasu', image: 'Equipes/Japão.png' },
+    { id: 'italia', name: 'Sozanni', image: 'Equipes/Italia.png' },
+    { id: 'inglaterra', name: 'three Crowns london', image: 'Equipes/inglaterra.png' },
+    { id: 'franca', name: 'Chevalier Veloce', image: 'Equipes/França.png' },
+    { id: 'espanha', name: 'La Rueda Roja', image: 'Equipes/Espanha.png' },
+    { id: 'coreia-do-sul', name: 'Haechi Dynamics', image: 'Equipes/Coreia do Sul.png' },
+    { id: 'china', name: 'Xinghai Long', image: 'Equipes/China.png' },
+    { id: 'canada', name: 'Northern Wolves', image: 'Equipes/Canada.png' },
+    { id: 'argentina', name: 'La plata Boys', image: 'Equipes/Argentina.png' },
+    { id: 'arabia-saudita', name: 'Aswad Al Sahra', image: 'Equipes/Arabia Saudita.png' },
+    { id: 'alemanha', name: 'Adelberg', image: 'Equipes/Alemanha.png' },
+    { id: 'Malasia', name: 'Harimau Malaya', image: 'Equipes/Malasia.png' },
+    { id: 'Mexico', name: 'Aguilas Huanacaz', image: 'Equipes/Mexico.png' },
+    { id: 'indonesia', name: 'Nusantara', image: 'Equipes/Indonesia.png' }
+
+  ];
+
+  const teamsGrid = document.getElementById('lista-equipes');
+
+  function renderTeams() {
+    teams.forEach(team => {
+      const card = document.createElement('a');
+      const image = document.createElement('img');
+      const name = document.createElement('h3');
+
+      card.className = 'card team';
+      card.href = `#equipes/${team.id}`;
+      image.className = 'team__logo';
+      image.src = team.image;
+      image.alt = team.name;
+      image.loading = 'lazy';
+      name.textContent = team.name;
+      card.append(image, name);
+      teamsGrid.appendChild(card);
+    });
+  }
+
+  renderTeams();
+
+
   /* ---------- Estruturas repetidas (cards vazios) ----------
      Cada container com data-repeat="N" e data-tpl="id-do-template"
      recebe N cópias do <template>. Para inserir conteúdo real depois,
@@ -35,9 +80,14 @@
 
   /* ---------- Navegação SPA ---------- */
   const routeFromHash = () => {
-    const id = location.hash.replace('#', '');
+
+    const id = location.hash
+        .replace('#', '')
+        .split('/')[0];
+
     return pages.has(id) ? id : DEFAULT_ROUTE;
-  };
+
+};
 
   function show(id, { focus = true } = {}) {
     if (id === current) return;
@@ -69,10 +119,51 @@
   }
 
   function onRoute() {
+    const route = location.hash.replace('#', '').split('/');
+    const teamId = route[1];
     const id = routeFromHash();
-    if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
+
+    if (route[0] !== id) history.replaceState(null, '', '#' + id);
     show(id, { focus: current !== null });
+
+    if (id === 'equipes') {
+      if (teamId) openTeamPage(teamId);
+      else showTeamList();
+    }
   }
+
+  function openTeamPage(teamId) {
+    const team = teams.find(item => item.id === teamId);
+    if (!team) {
+      location.hash = '#equipes';
+      return;
+    }
+
+    const template = document.getElementById('tpl-team-page');
+    const list = document.getElementById('equipes-listagem');
+    const page = document.getElementById('equipe-pagina');
+    const content = template.content.cloneNode(true);
+    const image = content.querySelector('[data-team-image]');
+
+    image.src = team.image;
+    image.alt = team.name;
+    content.querySelector('[data-team-name]').textContent = team.name;
+    content.querySelector('[data-team-description]').textContent =
+      `${team.name} representa sua região no Grand Horizon Tour.`;
+
+    list.hidden = true;
+    page.hidden = false;
+    page.replaceChildren(content);
+    document.title = `${team.name} | ${baseTitle}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showTeamList() {
+    document.getElementById('equipe-pagina').hidden = true;
+    document.getElementById('equipes-listagem').hidden = false;
+    document.title = 'Equipes Filiadas | ' + baseTitle;
+  }
+
 
   window.addEventListener('hashchange', onRoute);
 

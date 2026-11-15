@@ -133,8 +133,10 @@
   <section class="page" id="equipes" aria-labelledby="t-equipes" hidden>
     <div class="wrap">
       <header class="page-head"><h1 id="t-equipes">Equipes Filiadas</h1><div class="slash" aria-hidden="true"></div></header>
-      <div class="toolbar"><div class="search"><input type="search" aria-label="Buscar equipes" placeholder=""></div></div>
-      <div class="grid grid--4" data-repeat="12" data-tpl="tpl-team" data-slot="lista-equipes"></div>
+      <div id="equipes-listagem">
+        <div class="grid grid--4" id="lista-equipes"></div>
+      </div>
+      <div id="equipe-pagina" hidden></div>
     </div>
   </section>
 
@@ -175,6 +177,29 @@
 <template id="tpl-logo"><div class="logo"></div></template>
 <template id="tpl-logo-lg"><div class="logo logo--lg"></div></template>
 <template id="tpl-social"><a class="social__item" href="#" aria-hidden="true" tabindex="-1"></a></template>
+<template id="tpl-team-page">
+  
+  <a class="btn btn--ghost team-page__back" href="#equipes">← Voltar para equipes</a>
+  <article class="team-page">
+    <header class="team-page__header">
+      <img data-team-image alt="">
+      <h1 data-team-name></h1>
+      <p>Equipe oficial do Grand Horizon Tour</p>
+    </header>
+    <section>
+      <h2>Sobre a equipe</h2>
+      <p data-team-description></p>
+    </section>
+    <section>
+      <h2>Pilotos</h2>
+      <p>As informações dos pilotos serão adicionadas em breve.</p>
+    </section>
+    <section>
+      <h2>Patrocinadores</h2>
+      <p>As informações dos patrocinadores serão adicionadas em breve.</p>
+    </section>
+  </article>
+</template>
 
 <script src="script.js"></script>
 </body>
